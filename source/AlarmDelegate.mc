@@ -25,7 +25,8 @@ class AlarmDelegate extends Ui.MenuInputDelegate {
       var countStr = Lang.format("($1$)  ", [count]);
       var alarmItem;
 
-      if ((count & 1) == 0) {
+// For icons and text
+/*      if ((count & 1) == 0) {
         var bitmap = Ui.loadResource(Rez.Drawables.LauncherIcon);
         alarmItem = new IconMenu(
           count,
@@ -34,14 +35,14 @@ class AlarmDelegate extends Ui.MenuInputDelegate {
           alarm,
           bitmap
         );
-      } else {
+      } else { */
         alarmItem = new DMenuItem(count, countStr + timeStr, value, alarm);
-      }
+//      }
 
       // Insert new alarm just before the AddAlarm entry.  This has the benefit of also
       // being the newly selectable menu item, otherwise view.index could be updated.
-      view.menuArray[item.index] = alarmItem;
-      view.menuArray.add(item);
+      view.itemArray[item.index] = alarmItem;
+      view.itemArray.add(item);
       count++;
     } else {
       // Just toggle the status.
