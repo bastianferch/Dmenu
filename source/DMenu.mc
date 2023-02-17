@@ -8,10 +8,9 @@ const NUMBER_OF_ENTRIES = 5;
 // Any overridden drawing should be constrained within the items boundaries, i.e. y .. y + height / NUMBER_OF_ENTRIES.
 class DMenuItem {
   const LABEL_FONT = Gfx.FONT_TINY;
-  const SELECTED_LABEL_FONT = Gfx.FONT_MEDIUM;
-  const VALUE_FONT = Gfx.FONT_SMALL;
+  const SELECTED_LABEL_FONT = Gfx.FONT_TINY;
+  const VALUE_FONT = Gfx.FONT_TINY;
   const PAD = 0;
-
 
   var id, label, value, userData;
   var index; // filled in with its index, if selected
@@ -25,7 +24,7 @@ class DMenuItem {
   function initialize(_id, _label, _value, _userData) {
     id = _id;
     label = _label;
-    //value = _value;
+    value = _value;
     userData = _userData;
   }
 
@@ -63,8 +62,8 @@ class DMenuItem {
     var lab = label.toString();
     var labDims = dc.getTextDimensions(lab, SELECTED_LABEL_FONT);
     var yL, yV, h;
-/* // only necessary for 2 rows of text
-   if (value != null) {
+    // only necessary for 2 rows of text
+    if (value != null) {
       // Show label and value.
       var val = value.toString();
       var valDims = dc.getTextDimensions(val, VALUE_FONT);
@@ -73,16 +72,10 @@ class DMenuItem {
       yL = y + (h_entry - h) / 2;
       yV = yL + labDims[1] + PAD;
       dc.drawText(width / 2, yV, VALUE_FONT, val, Gfx.TEXT_JUSTIFY_CENTER);
-    } else {*/
+    } else {
       yL = y + (h_entry - labDims[1]) / 2;
-    //}
-    dc.drawText(
-      width / 2,
-      yL,
-      SELECTED_LABEL_FONT,
-      lab,
-      Gfx.TEXT_JUSTIFY_CENTER
-    );
+    }
+    dc.drawText(width / 2, yL, SELECTED_LABEL_FONT, lab, Gfx.TEXT_JUSTIFY_CENTER);
   }
 }
 
@@ -130,8 +123,7 @@ class DMenu extends Ui.View {
     WatchUi.requestUpdate();
   }
 
-  // const ANIM_TIME = 0.2;
-  const ANIM_TIME = 0; //disable animation
+  const ANIM_TIME = 0.2; // 0 disable animation, values between 0.1 and 0.5 look okay
   function updateIndex(offset) {
     if (itemArray.size() <= 1) {
       return;
@@ -140,28 +132,12 @@ class DMenu extends Ui.View {
     if (offset == 1) {
       // Scroll down. Use 1000 as end value as cannot use 1. Scale as necessary in draw call.
       if (ANIM_TIME > 0) {
-        Ui.animate(
-          drawMenu,
-          :t,
-          Ui.ANIM_TYPE_LINEAR,
-          1000,
-          0,
-          ANIM_TIME,
-          method(:animateComplete)
-        );
+        Ui.animate(drawMenu, :t, Ui.ANIM_TYPE_LINEAR, 1000, 0, ANIM_TIME, method(:animateComplete));
       }
     } else {
       // Scroll up.
       if (ANIM_TIME > 0) {
-        Ui.animate(
-          drawMenu,
-          :t,
-          Ui.ANIM_TYPE_LINEAR,
-          -1000,
-          0,
-          ANIM_TIME,
-          method(:animateComplete)
-        );
+        Ui.animate(drawMenu, :t, Ui.ANIM_TYPE_LINEAR, -1000, 0, ANIM_TIME, method(:animateComplete));
       }
     }
 
@@ -181,7 +157,8 @@ class DMenu extends Ui.View {
     return itemArray[index];
   }
 
-  function onUpdate(dc) {
+  // Dc as device context
+  function onUpdate(dc as Dc) {
     var width = dc.getWidth();
     var height = dc.getHeight();
     menuHeight = height;
@@ -199,12 +176,16 @@ class DMenu extends Ui.View {
 
     drawMenu.draw(dc);
 
-    // Draw the decorations.
+    var pen_width = 2;
+
+    // Draw the decorations(lines around the selected object)
     var h_entry = height / NUMBER_OF_ENTRIES;
+    // y for the middle of the items.
+    var y = h_entry * ((NUMBER_OF_ENTRIES - 1) / 2);
     dc.setColor(Gfx.COLOR_BLACK, Gfx.COLOR_WHITE);
-    dc.setPenWidth(2);
-    dc.drawLine(0, h_entry, width, h_entry);
-    dc.drawLine(0, h_entry * 2, width, h_entry * 2);
+    dc.setPenWidth(pen_width);
+    dc.drawLine(0, y - pen_width, width, y - pen_width);
+    dc.drawLine(0, y + h_entry + pen_width, width, y + h_entry + pen_width);
 
     drawArrows(dc);
   }
@@ -259,8 +240,8 @@ class DrawMenu extends Ui.Drawable {
 
     nextIndex = menu.nextIndex;
 
-    // y for the middle of the three items.
-    var y = h_entry + (t / 1000.0) * h_entry;
+    // y for the middle of the items.
+    var y = h_entry * ((NUMBER_OF_ENTRIES - 1) / 2) + (t / 1000.0) * h_entry;
 
     // Depending on where we are in the menu and in the animation some of
     // these will be unnecessary but it is easier to draw everything and
@@ -281,19 +262,13 @@ class DrawMenu extends Ui.Drawable {
     }
 
     dc.setColor(Gfx.COLOR_BLACK, Gfx.COLOR_WHITE);
-    dc.fillRectangle(0, y, width, h_entry);
+    dc.fillRectangle(0, y - 96, width, h_entry * 3 - 2);
 
     if (menu.title != null) {
       var dims = dc.getTextDimensions(menu.title, TITLE_FONT);
       var h = (h_entry - dims[1]) / 2;
       dc.setColor(Gfx.COLOR_WHITE, Gfx.COLOR_BLACK);
-      dc.drawText(
-        width / 2,
-        y + h,
-        TITLE_FONT,
-        menu.title,
-        Gfx.TEXT_JUSTIFY_CENTER
-      );
+      dc.drawText(width / 2, y + h, TITLE_FONT, menu.title, Gfx.TEXT_JUSTIFY_CENTER);
     }
   }
 
@@ -302,13 +277,7 @@ class DrawMenu extends Ui.Drawable {
     var h_entry = dc.getHeight() / NUMBER_OF_ENTRIES;
 
     // Cannot see item if it doesn't exist or will not be visible.
-    if (
-      idx < 0 ||
-      idx >= menu.itemArray.size() ||
-      menu.itemArray[idx] == null ||
-      y > dc.getHeight() ||
-      y < -h_entry
-    ) {
+    if (idx < 0 || idx >= menu.itemArray.size() || menu.itemArray[idx] == null || y > dc.getHeight() || y < -h_entry) {
       return;
     }
 
