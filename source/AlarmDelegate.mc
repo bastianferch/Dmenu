@@ -13,7 +13,7 @@ class AlarmDelegate extends Ui.MenuInputDelegate {
     count = 0;
   }
 
-  function onMenuItem(item) {
+  function onMenuItem(item as DMenuItem?) {
     if (item.id == :AddAlarm) {
       var time = [Math.rand() % 12, Math.rand() % 60];
       var timeStr = Lang.format("$1$:$2$ am", time);
