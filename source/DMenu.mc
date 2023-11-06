@@ -2,7 +2,8 @@ using Toybox.WatchUi as Ui;
 using Toybox.System as Sys;
 using Toybox.Graphics as Gfx;
 
-const NUMBER_OF_ENTRIES = 5;
+var NUMBER_OF_ENTRIES = 5;
+
 // Inherit from this if you want to store additional information in the menu entry and/or change how
 // the menu is drawn - for example adding in a status icon.
 // Any overridden drawing should be constrained within the items boundaries, i.e. y .. y + height / NUMBER_OF_ENTRIES.
@@ -26,6 +27,10 @@ class DMenuItem {
     label = _label;
     value = _value;
     userData = _userData;
+  }
+
+  function stringify() {
+    return "DMenuItem{id:" + id + ", label:" + label + ", value:" + value + ", userData:" + userData + "}";
   }
 
   function draw(dc, y, highlight) {
@@ -62,8 +67,21 @@ class DMenuItem {
     var lab = label.toString();
     var labDims = dc.getTextDimensions(lab, SELECTED_LABEL_FONT);
     var yL, yV, h;
-    // only necessary for 2 rows of text
-    if (value != null) {
+
+    if (labDims[0] > width) {
+      // show too long label
+      System.println(labDims + " " + lab);
+      var pos;
+      for (var i = 0; dc.getTextWidthInPixels(lab.substring(0, i), SELECTED_LABEL_FONT) < width; i++) {
+        pos = i.toNumber();
+      }
+      h = labDims[1] * 2 + PAD;
+      yL = y + (h_entry - h) / 2;
+      yV = yL + labDims[1] + PAD;
+      System.println(lab.substring(pos - 1, lab.length() - 1).toString() + " " + Gfx.TEXT_JUSTIFY_CENTER);
+      dc.drawText(width / 2, yV, SELECTED_LABEL_FONT, lab.substring(pos - 1, lab.length() - 1).toString(), Gfx.TEXT_JUSTIFY_CENTER);
+      lab = lab.substring(0, pos - 1) + "-";
+    } else if (value != null) {
       // Show label and value.
       var val = value.toString();
       var valDims = dc.getTextDimensions(val, VALUE_FONT);
@@ -83,17 +101,19 @@ class DMenu extends Ui.View {
   var itemArray;
   var title;
   var index;
+  var numberOfItems;
 
   var nextIndex;
   hidden var drawMenu;
 
   var menuHeight = null;
 
-  function initialize(_itemArray, _menuTitle) {
+  function initialize(_itemArray, _menuTitle, _numberOfItems) {
     itemArray = _itemArray;
     title = _menuTitle;
-    index = 0;
-    nextIndex = 0;
+    numberOfItems = _numberOfItems;
+    index = 1;
+    nextIndex = 1;
 
     View.initialize();
   }
@@ -158,7 +178,7 @@ class DMenu extends Ui.View {
   }
 
   // Dc as device context
-  function onUpdate(dc as Dc) {
+  function onUpdate(dc) {
     var width = dc.getWidth();
     var height = dc.getHeight();
     menuHeight = height;
