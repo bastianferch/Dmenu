@@ -145,7 +145,7 @@ graph{
     "Sperre Nicht während der Aktivität" [label="Nicht während der Aktivität"]
 
     Ausgeschalten -- Home [label="START-STOP gedürckt halten"]
-        Home -- "Spezifische Einstellungen (Home)" [label="UP gedrückt halten0"]
+        Home -- "Spezifische Einstellungen (Home)" [label="UP gedrückt halten"]
             "Spezifische Einstellungen (Home)" -- Displaydesign
             "Spezifische Einstellungen (Home)" -- Uhren
                 Uhren -- Alarme
@@ -462,29 +462,41 @@ graph{
                     "Software-Update" -- "Nach Updates suchen"
                 System -- Info
     Ausgeschalten -- Leistung
-        Leistung -- "Spezifische Einstellungen(Übersicht)"
+    Leistung -- "Einstellungen"
+    Leistung -- "Spezifische Einstellungen(Übersicht)"
     Ausgeschalten -- Trainingszustand
-        Trainingszustand -- "Spezifische Einstellungen(Übersicht)"
+    Trainingszustand -- "Einstellungen"
+    Trainingszustand -- "Spezifische Einstellungen(Übersicht)"
     Ausgeschalten -- Trainingsbereitschaft
-        Trainingsbereitschaft -- "Spezifische Einstellungen(Übersicht)"
+    Trainingsbereitschaft -- "Einstellungen"
+    Trainingsbereitschaft -- "Spezifische Einstellungen(Übersicht)"
     Ausgeschalten -- "HFV-Status"
-        "HFV-Status" -- "Spezifische Einstellungen(Übersicht)"
+    "HFV-Status" -- "Einstellungen"
+    "HFV-Status" -- "Spezifische Einstellungen(Übersicht)"
     Ausgeschalten -- Benachrichtigungen
-        Benachrichtigungen -- "Spezifische Einstellungen(Übersicht)"
+    Benachrichtigungen -- "Einstellungen"
+    Benachrichtigungen -- "Spezifische Einstellungen(Übersicht)"
     Ausgeschalten -- Herzfrequenz
-        Herzfrequenz -- "Spezifische Einstellungen(Übersicht)"
+    Herzfrequenz -- "Einstellungen"
+    Herzfrequenz -- "Spezifische Einstellungen(Übersicht)"
     Ausgeschalten -- Musikfunktionen
-        Musikfunktionen -- "Spezifische Einstellungen(Übersicht)"
+    Musikfunktionen -- "Einstellungen"
+    Musikfunktionen -- "Spezifische Einstellungen(Übersicht)"
     Ausgeschalten -- ABC
-        ABC -- "Spezifische Einstellungen(Übersicht)"
+    ABC -- "Einstellungen"
+    ABC -- "Spezifische Einstellungen(Übersicht)"
     Ausgeschalten -- Atmung
+        Atmung -- "Einstellungen"
         Atmung -- "Spezifische Einstellungen(Übersicht)"
     Ausgeschalten -- Schlaf
+        Schlaf -- "Einstellungen"
         Schlaf -- "Spezifische Einstellungen(Übersicht)"
-    Ausgeschalten -- Protokoll
-        Protokoll -- "Spezifische Einstellungen(Übersicht)"
+    Ausgeschalten -- "Protokoll Home"
+        "Protokoll Home" -- "Einstellungen"
+        "Protokoll Home" -- "Spezifische Einstellungen(Übersicht)"
     Ausgeschalten -- "Letze Trainings"
         "Letzte Trainigns" -- "Spezifische Einstellungen(Übersicht)"
+        "Letzte Trainigns" -- "Einstellungen"
 
 }
 

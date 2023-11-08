@@ -282,7 +282,7 @@ class DrawMenu extends Ui.Drawable {
     }
 
     dc.setColor(Gfx.COLOR_BLACK, Gfx.COLOR_WHITE);
-    dc.fillRectangle(0, y - 96, width, h_entry * 3 - 2);
+    dc.fillRectangle(0, y - 104, width, h_entry * 3 - 2);
 
     if (menu.title != null) {
       var dims = dc.getTextDimensions(menu.title, TITLE_FONT);
