@@ -1,4 +1,4 @@
-graph{
+digraph{
     // Rekorde
     "Rekorde Laufen" [label="Laufen"]
     "Rekorde Radfahren" [label="Radfahren"]
@@ -103,6 +103,11 @@ graph{
     "Seite 1 Feld 1" [label="Feld 1"]
     "Seite 1 Feld 2" [label="Feld 2"]
 
+    "Seite 2 Status" [label="Status"]
+    "Seite 2 Layout" [label="Layout"]
+    "Seite 2 Feld 1" [label="Feld 1"]
+    "Seite 2 Feld 2" [label="Feld 2"]
+
     // Power Manager
     "Energiesparmodus Status" [label="Status"]
     "Bearbeiten Displaydesign" [label="Displaydesign"]
@@ -144,359 +149,395 @@ graph{
     "Sperre Während der Aktivität" [label="Während der Aktivität"]
     "Sperre Nicht während der Aktivität" [label="Nicht während der Aktivität"]
 
-    Ausgeschalten -- Home [label="START-STOP gedürckt halten"]
-        Home -- "Spezifische Einstellungen (Home)" [label="UP gedrückt halten"]
-            "Spezifische Einstellungen (Home)" -- Displaydesign
-            "Spezifische Einstellungen (Home)" -- Uhren
-                Uhren -- Alarme
-                    Alarme -- "Alarm 1"
-                    Alarme -- "Alarm 2"
-                    Alarme -- "Alarm hinzufügen"
-                Uhren -- Timer
-                    Timer -- "Timer 1"
-                    Timer -- "Timer 2" 
-                    Timer -- "Timer hinzufügen"
-                Uhren -- Stoppuhr
-                Uhren -- "Alternative Zeitzonen"
-                    "Alternative Zeitzonen" -- "Zone 2"
-                    "Alternative Zeitzonen" -- "Zone hinzufügen"
-            "Spezifische Einstellungen (Home)" -- Protokoll
-                Protokoll -- "Diese Woche"
-                    "Diese Woche" -- "Aktivität 1"
-                    "Diese Woche" -- "Aktivität 2"
-                Protokoll -- "Vorherige Wochen"
-                    "Vorherige Wochen" -- "Woche 1.1.-7.1."
-                    "Vorherige Wochen" -- "Woche 8.1.-14.1."
-                Protokoll -- Rekorde
-                    Rekorde -- "Rekorde Laufen"
-                        "Rekorde Laufen" -- "5km"
-                        "Rekorde Laufen" -- "10km"
-                        "Rekorde Laufen" -- Halbmarathon
-                        "Rekorde Laufen" -- Marathon
-                        "Rekorde Laufen" -- "längste Strecke"
-                        "Rekorde Laufen" -- "alle Rekorde löschen"
-                    Rekorde -- "Rekorde Radfahren"
-                        "Rekorde Radfahren" -- "40km"
-                        "Rekorde Radfahren" -- "längste Tour"
-                        "Rekorde Radfahren" -- "größter Anstieg"
-                        "Rekorde Radfahren" -- "beste Watt-Leistung"
-                        "Rekorde Radfahren" -- "alle Rekorde löschen"
-                    Rekorde -- "Rekorde Schwimmen"
-                        "Rekorde Schwimmen" -- "100m"
-                        "Rekorde Schwimmen" -- "400m"
-                        "Rekorde Schwimmen" -- "750m"
-                        "Rekorde Schwimmen" -- "1000m"
-                        "Rekorde Schwimmen" -- "1500m"
-                        "Rekorde Schwimmen" -- "längstes Schwimmen"
-                        "Rekorde Schwimmen" -- "alle Rekorde löschen"
-                    Rekorde -- Krafttraining
-                Protokoll -- Gesamt
-                    Gesamt -- "History Laufen"
-                        "History Laufen" -- "Laufen wöchentlich"
-                        "History Laufen" -- "Laufen monatlich"
-                    Gesamt -- "History Radfahren"
-                        "History Radfahren" -- "Radfahren wöchentlich"
-                        "History Radfahren" -- "Radfahren monatlich"
-                    Gesamt -- "History Schwimmen"
-                        "History Schwimmen" -- "Schwimmen wöchentlich"
-                        "History Schwimmen" -- "Schwimmen monatlich"
-                Protokoll -- Optionen
-        Home -- Einstellungen
-            Einstellungen -- "Aktivitäten und Apps"
-                "Aktivitäten und Apps" -- "Details Aktivität 1"
-                    "Details Aktivität 1" -- "Aktivität 1-Einstellungen"
-                    "Details Aktivität 1" -- "Aus Favoriten entfernen"
-                    "Details Aktivität 1" -- "Aktivität kopieren"
-                    "Details Aktivität 1" -- "Aktivität Neu anordnen"
-                    "Details Aktivität 1" -- "Aus Liste entfernen"
-                "Aktivitäten und Apps" -- "Details Aktivität 2"
-                    "Details Aktivität 2" -- "Aktivität 2-Einstellungen"
-                    "Details Aktivität 2" -- "Aus Favoriten entfernen"
-                    "Details Aktivität 2" -- "Aktivität kopieren"
-                    "Details Aktivität 2" -- "Aktivität Neu anordnen"
-                    "Details Aktivität 2" -- "Aus Liste entfernen"
-                "Aktivitäten und Apps" -- "Aktivität hinzufügen"
-            Einstellungen -- Darstellung
-                Darstellung -- Displaydesign
-                    Displaydesign -- "Display 1"
-                    Displaydesign -- "Display 2"
-                Darstellung -- "Übersichten bearbeiten"
-                    "Übersichten bearbeiten" -- "Übersicht 1 verschieben"
-                    "Übersichten bearbeiten" -- "Übersicht 2 verschieben"
-                Darstellung -- "Steuerungen bearbeiten"
-                    "Steuerungen bearbeiten" -- "Steuerung 1"
-                        "Steuerung 1" -- "Neu anordnen"
-                        "Steuerung 1" -- "Entfernen"
-                    "Steuerungen bearbeiten" -- "Steuerung 2"
-                        "Steuerung 2" -- "Neu anordnen"
-                        "Steuerung 2" -- "Entfernen"
-                Darstellung -- Morgenbericht
-                    Morgenbericht -- "Bericht anzeigen"
-                    Morgenbericht -- "Bericht bearbeiten"
-                        "Bericht bearbeiten" -- "Information 1 verschieben"
-                        "Bericht bearbeiten" -- "Information 2 verschieben"
-                    Morgenbericht -- "Dein Name"
-            Einstellungen -- "Benachrichtigungen und Alarme"
-                "Benachrichtigungen und Alarme" -- "Smart Notifications"
-                    "Smart Notifications" -- "Während der Aktivität"
-                    "Smart Notifications" -- "Allgemeine Nutzung"
-                    "Smart Notifications" -- "Signatur"
-                "Benachrichtigungen und Alarme" -- Systemalarme
-                    Systemalarme -- "Systemalarme Alarme"
-                        "Systemalarme Alarme" -- "Bis Sonnenuntergang"
-                        "Systemalarme Alarme" -- "Bis Sonnenaufgang"
-                        "Systemalarme Alarme" -- "Stündlich"
-                    Systemalarme -- "Systemalarme Barometer"
-                        "Systemalarme Barometer" -- Unwetterwarnung
-                            Unwetterwarnung -- "Unwetterwarnung Status"
-                            Unwetterwarnung -- Rate
-                    Systemalarme -- "Systemalarme Telefon"
-                    Systemalarme -- "Systemalarme Fitness"
-                        "Systemalarme Fitness" -- Inaktivitätsalarm
-                        "Systemalarme Fitness" -- Zielalarme
-                    Systemalarme -- "Systemalarme Alarme für abnormale HF"
-            Einstellungen -- "Sensoren und Zubehör"
-                "Sensoren und Zubehör" -- "Auto-Erkennung"
-                "Sensoren und Zubehör" -- "Sensoren Neu hinzufügen"
-                "Sensoren und Zubehör" -- "Sensor 1"
-                "Sensoren und Zubehör" -- "Sensor 2"
-                "Sensoren und Zubehör" -- "Sensoren Kompass"
-                    "Sensoren Kompass" -- "Kompass Kalibrieren"
-                    "Sensoren Kompass" -- "Kompass Anzeige"
-                    "Sensoren Kompass" -- "Kompass Nordreferenz"
-                    "Sensoren Kompass" -- "Kompass Modus"
-                "Sensoren und Zubehör" -- "Sensoren Höhenmesser"
-                    "Sensoren Höhenmesser" -- "Höhenmesser Kalibrieren"
-                    "Sensoren Höhenmesser" -- "Höhenmesser Auto-Kalibrierung"
-                    "Sensoren Höhenmesser" -- "Höhenmesser Sensormodus"
-                    "Sensoren Höhenmesser" -- "Höhenmesser Höhe"
-                "Sensoren und Zubehör" -- "Sensoren Barometer"
-                    "Sensoren Barometer" -- "Barometer Kalibrieren"
-                    "Sensoren Barometer" -- "Barometer Profil"
-                    "Sensoren Barometer" -- "Barometer Unwetterwarnung"
-                    "Sensoren Barometer" -- "Barometer Sensormodus"
-                    "Sensoren Barometer" -- "Barometer Druck"
-                "Sensoren und Zubehör" -- "Sensoren Golfsensoren" -- "Golfsensoren Neu hinzufügen"
-            Einstellungen -- Musik
-                Musik -- Musikanbieter
-                    Musikanbieter -- "Meine Musik"
-                    Musikanbieter -- "Telefon steuern"
-                    Musikanbieter -- "Musikapps hinzufügen"
-                Musik -- Kopfhörer
-                    Kopfhörer -- "Kopfhörer Neu hinzufügen"
-                Musik -- Audio
-            Einstellungen -- Konnektivität
-                Konnektivität -- Telefon
-                Konnektivität -- WLAN
-            Einstellungen -- Ansagen
-                Ansagen -- Rundenalarm
-                Ansagen -- "Pace/Geschwindigkeitsalarm"
-                    "Pace/Geschwindigkeitsalarm" -- "Pace/Geschwindigkeitsalarm Status"
-                    "Pace/Geschwindigkeitsalarm" -- "Pace/Geschwindigkeitsalarm Alarmtyp"
-                    "Pace/Geschwindigkeitsalarm" -- "Pace/Geschwindigkeitsalarm Alarmfrequenz"
-                Ansagen -- "HF-Alarm"
-                    "HF-Alarm" -- "HF-Alarm Status"
-                    "HF-Alarm" -- "HF-Alarm Alarmtyp"
-                    "HF-Alarm" -- "HF-Alarm Alarmfrequenz"
-                Ansagen -- Leistungsalarm
-                    Leistungsalarm -- "Leistungsalarm Status"
-                    Leistungsalarm -- "Leistungsalarm Alarmtyp"
-                    Leistungsalarm -- "Leistungsalarm Alarmfrequenz"
-                Ansagen -- "Timer-Ereignisse"
-                Ansagen -- Trainingsalarme
-                Ansagen -- Aktivitätsalarme
-                Ansagen -- Audiosignale
-                Ansagen -- Dialekt
-            Einstellungen -- Benutzerprofil
-                Benutzerprofil -- Fitnessalter
-                Benutzerprofil -- Geschlecht
-                Benutzerprofil -- Geburtsjahr
-                Benutzerprofil -- Größe
-                Benutzerprofil -- Gewicht
-                Benutzerprofil -- Handgelenkt
-                Benutzerprofil -- "Herzfrequenz- und Leistungsbereiche"
-                Benutzerprofil -- "Critical Swim Speed"
-            Einstellungen -- "Sicherheit und Tracking"
-                "Sicherheit und Tracking" -- LiveTrack
-                "Sicherheit und Tracking" -- "Unfall-Benachrichtigung"
-                "Sicherheit und Tracking" -- Hilfe
-                "Sicherheit und Tracking" -- Notfallkontakte
-            Einstellungen -- "Einstellungen Fitness"
-                "Einstellungen Fitness" -- "Herzfrequenz am Handgelenk"
-                    "Herzfrequenz am Handgelenk" -- "Herzfrequenz am Handgelenk Status"
-                    "Herzfrequenz am Handgelenk" -- "Beim Schwimmen"
-                    "Herzfrequenz am Handgelenk" -- "Alarme für abnormale HF"
-                        "Alarme für abnormale HF" -- "Oberer Alarm"
-                        "Alarme für abnormale HF" -- "Unterer Alarm"
-                        "Alarme für abnormale HF" -- "Niedriger Schwellenwert"
-                    "Herzfrequenz am Handgelenk" -- "Herzfrequenz senden"
-                "Einstellungen Fitness" -- "Pulsoximeter"
-                "Einstellungen Fitness" -- "Fitness Inaktivitätsalarm"
-                "Einstellungen Fitness" -- "Fitness Zielalarme" 
-                "Einstellungen Fitness" -- "Move IQ"
-            Einstellungen -- Karte
-                Karte -- Kartenmanager
-                    Kartenmanager -- "TopoActive-Karten"
-                        "TopoActive-Karten" -- "TopoActive-Karten Karte 1"
-                        "TopoActive-Karten" -- "TopoActive-Karten Karte 2"
-                        "TopoActive-Karten" -- "Karte hinzufügen"
-                    Kartenmanager -- "Kartenmanager Karte 1"
-                    Kartenmanager -- "Kartenmanager Karte 2"
-                Karte -- Kartendesign
-                Karte -- Ausrichtung
-                Karte -- Benutzerpositionen
-                Karte -- "Auto-Zoom"
-                Karte -- "Auf Straße zeigen"
-                Karte -- Trackaufzeichung
-                Karte -- Trackfarbe
-                Karte -- Detailgrad
-                Karte -- "Plastische Karte"
-                Karte -- Marine
-                Karte -- "Segmente zeichnen"
-                Karte -- "Höhenlinie zeichnen"
-                Karte -- "Design wiederherstellen"
-            Einstellungen -- Navigation
-                Navigation -- Datenseiten
-                    Datenseiten -- "Datenseiten Karte"
-                    Datenseiten -- "POI entlang Route"
-                    Datenseiten -- "Kompass"
-                    Datenseiten -- "Höhenprofil"
-                    Datenseiten -- "Datenseiten Seite 1"
-                        "Datenseiten Seite 1" -- "Seite 1 Status"
-                        "Datenseiten Seite 1" -- "Seite 1 Layout"
-                        "Datenseiten Seite 1" -- "Seite 1 Feld 1"
-                        "Datenseiten Seite 1" -- "Seite 1 Feld 2"
-                    Datenseiten -- "Datenseiten Seite 2"
-                Navigation -- Richtungsanzeige
-                Navigation -- "Navigation Alarme"
-                    "Navigation Alarme" -- "Distanz zum endgültigen Ziel"
-                        "Distanz zum endgültigen Ziel" -- "Distanz zum endgültigen Ziel Status"
-                        "Distanz zum endgültigen Ziel" -- "Distanz zum endgültigen Ziel Distanz"
-                    "Navigation Alarme" -- "Ziel: Zeit"
-                        "Ziel: Zeit" -- "Ziel: Zeit Status"
-                        "Ziel: Zeit" -- "Ziel: Zeit Zeit"
-                    "Navigation Alarme" -- "Streckenabw."
-                    "Navigation Alarme" -- "Abbiegehinweise"
-            Einstellungen -- "Power Manager"
-                "Power Manager" -- Energiesparmodus
-                    Energiesparmodus -- "Energiesparmodus Status"
-                    Energiesparmodus -- Bearbeiten
-                        Bearbeiten -- "Bearbeiten Displaydesign"
-                        Bearbeiten -- "Bearbeiten Musik"
-                        Bearbeiten -- "Bearbeiten Telefon"
-                        Bearbeiten -- "Bearbeiten WLAN"
-                        Bearbeiten -- "Bearbeiten HF am Handgelenk"
-                        Bearbeiten -- "Bearbeiten Pulsoximeter"
-                        Bearbeiten -- "Bearbeiten Beleuchtung"
-                "Power Manager" -- "Akku Laufzeit in %"
-                "Power Manager" -- "Erw. Akkulaufzeit"
+    Ausgeschalten -> Home [label="START-STOP gedürckt halten"]
+        Home -> "Spezifische Einstellungen (Home)" [label="UP gedrückt halten"]
+            "Spezifische Einstellungen (Home)" -> Displaydesign
+            "Spezifische Einstellungen (Home)" -> Uhren
+                Uhren -> Alarme
+                    Alarme -> "Alarm 1"
+                    Alarme -> "Alarm 2"
+                    Alarme -> "Alarm 3"
+                    Alarme -> "Alarm hinzufügen"
+                Uhren -> Timer
+                    Timer -> "Timer 1"
+                    Timer -> "Timer 2" 
+                    Timer -> "Timer 3" 
+                    Timer -> "Timer hinzufügen"
+                Uhren -> Stoppuhr
+                Uhren -> "Alternative Zeitzonen"
+                    "Alternative Zeitzonen" -> "Zone 1"
+                    "Alternative Zeitzonen" -> "Zone 2"
+                    "Alternative Zeitzonen" -> "Zone 3"
+                    "Alternative Zeitzonen" -> "Zone hinzufügen"
+            "Spezifische Einstellungen (Home)" -> Protokoll
+                Protokoll -> "Diese Woche"
+                    "Diese Woche" -> "Aktivität 1"
+                    "Diese Woche" -> "Aktivität 2"
+                    "Diese Woche" -> "Aktivität 3"
+                Protokoll -> "Vorherige Wochen"
+                    "Vorherige Wochen" -> "Woche 1.1.-7.1."
+                    "Vorherige Wochen" -> "Woche 8.1.-14.1."
+                    "Vorherige Wochen" -> "Woche 15.1.-22.1."
+                Protokoll -> Rekorde
+                    Rekorde -> "Rekorde Laufen"
+                        "Rekorde Laufen" -> "5km"
+                        "Rekorde Laufen" -> "10km"
+                        "Rekorde Laufen" -> Halbmarathon
+                        "Rekorde Laufen" -> Marathon
+                        "Rekorde Laufen" -> "längste Strecke"
+                        "Rekorde Laufen" -> "alle Rekorde löschen"
+                    Rekorde -> "Rekorde Radfahren"
+                        "Rekorde Radfahren" -> "40km"
+                        "Rekorde Radfahren" -> "längste Tour"
+                        "Rekorde Radfahren" -> "größter Anstieg"
+                        "Rekorde Radfahren" -> "beste Watt-Leistung"
+                        "Rekorde Radfahren" -> "alle Rekorde löschen"
+                    Rekorde -> "Rekorde Schwimmen"
+                        "Rekorde Schwimmen" -> "100m"
+                        "Rekorde Schwimmen" -> "400m"
+                        "Rekorde Schwimmen" -> "750m"
+                        "Rekorde Schwimmen" -> "1000m"
+                        "Rekorde Schwimmen" -> "1500m"
+                        "Rekorde Schwimmen" -> "längstes Schwimmen"
+                        "Rekorde Schwimmen" -> "alle Rekorde löschen"
+                    Rekorde -> Krafttraining
+                Protokoll -> Gesamt
+                    Gesamt -> "History Laufen"
+                        "History Laufen" -> "Laufen wöchentlich"
+                        "History Laufen" -> "Laufen monatlich"
+                    Gesamt -> "History Radfahren"
+                        "History Radfahren" -> "Radfahren wöchentlich"
+                        "History Radfahren" -> "Radfahren monatlich"
+                    Gesamt -> "History Schwimmen"
+                        "History Schwimmen" -> "Schwimmen wöchentlich"
+                        "History Schwimmen" -> "Schwimmen monatlich"
+                Protokoll -> Optionen
+        Home -> Einstellungen
+            Einstellungen -> "Aktivitäten und Apps"
+                "Aktivitäten und Apps" -> "Details Aktivität 1"
+                    "Details Aktivität 1" -> "Aktivität 1-Einstellungen"
+                    "Details Aktivität 1" -> "A1 Aus Favoriten entfernen"
+                    "Details Aktivität 1" -> "A1 Aktivität kopieren"
+                    "Details Aktivität 1" -> "A1 Aktivität Neu anordnen"
+                    "Details Aktivität 1" -> "A1 Aus Liste entfernen"
+                "Aktivitäten und Apps" -> "Details Aktivität 2"
+                    "Details Aktivität 2" -> "Aktivität 2-Einstellungen"
+                    "Details Aktivität 2" -> "A2 Aus Favoriten entfernen"
+                    "Details Aktivität 2" -> "A2Aktivität kopieren"
+                    "Details Aktivität 2" -> "A2 Aktivität Neu anordnen"
+                    "Details Aktivität 2" -> "A2 Aus Liste entfernen"
+                "Aktivitäten und Apps" -> "Details Aktivität 3"
+                    "Details Aktivität 3" -> "Aktivität 3-Einstellungen"
+                    "Details Aktivität 3" -> "A3 Aus Favoriten entfernen"
+                    "Details Aktivität 3" -> "A3 Aktivität kopieren"
+                    "Details Aktivität 3" -> "A3 Aktivität Neu anordnen"
+                    "Details Aktivität 3" -> "A3 Aus Liste entfernen"
+                "Aktivitäten und Apps" -> "Aktivität hinzufügen"
+            Einstellungen -> Darstellung
+                Darstellung -> Displaydesign
+                    Displaydesign -> "Display 1"
+                    Displaydesign -> "Display 2"
+                    Displaydesign -> "Display 3"
+                Darstellung -> "Übersichten bearbeiten"
+                    "Übersichten bearbeiten" -> "Übersicht 1 verschieben"
+                    "Übersichten bearbeiten" -> "Übersicht 2 verschieben"
+                    "Übersichten bearbeiten" -> "Übersicht 3 verschieben"
+                Darstellung -> "Steuerungen bearbeiten"
+                    "Steuerungen bearbeiten" -> "Steuerung 1"
+                        "Steuerung 1" -> "S1 Neu anordnen"
+                        "Steuerung 1" -> "S1 Entfernen"
+                    "Steuerungen bearbeiten" -> "Steuerung 2"
+                        "Steuerung 2" -> "S2 Neu anordnen"
+                        "Steuerung 2" -> "S2 Entfernen"
+                    "Steuerungen bearbeiten" -> "Steuerung 3"
+                        "Steuerung 3" -> "S3 Neu anordnen"
+                        "Steuerung 3" -> "S3 Entfernen"
+                Darstellung -> Morgenbericht
+                    Morgenbericht -> "Bericht anzeigen"
+                    Morgenbericht -> "Bericht bearbeiten"
+                        "Bericht bearbeiten" -> "Information 1 verschieben"
+                        "Bericht bearbeiten" -> "Information 2 verschieben"
+                        "Bericht bearbeiten" -> "Information 3 verschieben"
+                    Morgenbericht -> "Dein Name"
+            Einstellungen -> "Benachrichtigungen und Alarme"
+                "Benachrichtigungen und Alarme" -> "Smart Notifications"
+                    "Smart Notifications" -> "Während der Aktivität"
+                    "Smart Notifications" -> "Allgemeine Nutzung"
+                    "Smart Notifications" -> "Signatur"
+                "Benachrichtigungen und Alarme" -> Systemalarme
+                    Systemalarme -> "Systemalarme Alarme"
+                        "Systemalarme Alarme" -> "Bis Sonnenuntergang"
+                        "Systemalarme Alarme" -> "Bis Sonnenaufgang"
+                        "Systemalarme Alarme" -> "Stündlich"
+                    Systemalarme -> "Systemalarme Barometer"
+                        "Systemalarme Barometer" -> Unwetterwarnung
+                            Unwetterwarnung -> "Unwetterwarnung Status"
+                            Unwetterwarnung -> Rate
+                    Systemalarme -> "Systemalarme Telefon"Einstellungen
+                    Systemalarme -> "Systemalarme Fitness"
+                        "Systemalarme Fitness" -> Inaktivitätsalarm
+                        "Systemalarme Fitness" -> Zielalarme
+                    Systemalarme -> "Systemalarme Alarme für abnormale HF"
+            Einstellungen -> "Sensoren und Zubehör"
+                "Sensoren und Zubehör" -> "Auto-Erkennung"
+                "Sensoren und Zubehör" -> "Sensoren Neu hinzufügen"
+                "Sensoren und Zubehör" -> "Sensor 1"
+                "Sensoren und Zubehör" -> "Sensor 2"
+                "Sensoren und Zubehör" -> "Sensor 3"
+                "Sensoren und Zubehör" -> "Sensoren Kompass"
+                    "Sensoren Kompass" -> "Kompass Kalibrieren"
+                    "Sensoren Kompass" -> "Kompass Anzeige"
+                    "Sensoren Kompass" -> "Kompass Nordreferenz"
+                    "Sensoren Kompass" -> "Kompass Modus"
+                "Sensoren und Zubehör" -> "Sensoren Höhenmesser"
+                    "Sensoren Höhenmesser" -> "Höhenmesser Kalibrieren"
+                    "Sensoren Höhenmesser" -> "Höhenmesser Auto-Kalibrierung"
+                    "Sensoren Höhenmesser" -> "Höhenmesser Sensormodus"
+                    "Sensoren Höhenmesser" -> "Höhenmesser Höhe"
+                "Sensoren und Zubehör" -> "Sensoren Barometer"
+                    "Sensoren Barometer" -> "Barometer Kalibrieren"
+                    "Sensoren Barometer" -> "Barometer Profil"
+                    "Sensoren Barometer" -> "Barometer Unwetterwarnung"
+                    "Sensoren Barometer" -> "Barometer Sensormodus"
+                    "Sensoren Barometer" -> "Barometer Druck"
+                "Sensoren und Zubehör" -> "Sensoren Golfsensoren" -> "Golfsensoren Neu hinzufügen"
+            Einstellungen -> Musik
+                Musik -> Musikanbieter
+                    Musikanbieter -> "Meine Musik"
+                    Musikanbieter -> "Telefon steuern"
+                    Musikanbieter -> "Musikapps hinzufügen"
+                Musik -> Kopfhörer
+                    Kopfhörer -> "Kopfhörer Neu hinzufügen"
+                Musik -> Audio
+            Einstellungen -> Konnektivität
+                Konnektivität -> Telefon
+                Konnektivität -> WLAN
+            Einstellungen -> Ansagen
+                Ansagen -> Rundenalarm
+                Ansagen -> "Pace/Geschwindigkeitsalarm"
+                    "Pace/Geschwindigkeitsalarm" -> "Pace/Geschwindigkeitsalarm Status"
+                    "Pace/Geschwindigkeitsalarm" -> "Pace/Geschwindigkeitsalarm Alarmtyp"
+                    "Pace/Geschwindigkeitsalarm" -> "Pace/Geschwindigkeitsalarm Alarmfrequenz"
+                Ansagen -> "HF-Alarm"
+                    "HF-Alarm" -> "HF-Alarm Status"
+                    "HF-Alarm" -> "HF-Alarm Alarmtyp"
+                    "HF-Alarm" -> "HF-Alarm Alarmfrequenz"
+                Ansagen -> Leistungsalarm
+                    Leistungsalarm -> "Leistungsalarm Status"
+                    Leistungsalarm -> "Leistungsalarm Alarmtyp"
+                    Leistungsalarm -> "Leistungsalarm Alarmfrequenz"
+                Ansagen -> "Timer-Ereignisse"
+                Ansagen -> Trainingsalarme
+                Ansagen -> Aktivitätsalarme
+                Ansagen -> Audiosignale
+                Ansagen -> Dialekt
+            Einstellungen -> Benutzerprofil
+                Benutzerprofil -> Fitnessalter
+                Benutzerprofil -> Geschlecht
+                Benutzerprofil -> Geburtsjahr
+                Benutzerprofil -> Größe
+                Benutzerprofil -> Gewicht
+                Benutzerprofil -> Handgelenkt
+                Benutzerprofil -> "Herzfrequenz- und Leistungsbereiche"
+                Benutzerprofil -> "Critical Swim Speed"
+            Einstellungen -> "Sicherheit und Tracking"
+                "Sicherheit und Tracking" -> LiveTrack
+                "Sicherheit und Tracking" -> "Unfall-Benachrichtigung"
+                "Sicherheit und Tracking" -> Hilfe
+                "Sicherheit und Tracking" -> Notfallkontakte
+            Einstellungen -> "Einstellungen Fitness"
+                "Einstellungen Fitness" -> "Herzfrequenz am Handgelenk"
+                    "Herzfrequenz am Handgelenk" -> "Herzfrequenz am Handgelenk Status"
+                    "Herzfrequenz am Handgelenk" -> "Beim Schwimmen"
+                    "Herzfrequenz am Handgelenk" -> "Alarme für abnormale HF"
+                        "Alarme für abnormale HF" -> "Oberer Alarm"
+                        "Alarme für abnormale HF" -> "Unterer Alarm"
+                        "Alarme für abnormale HF" -> "Niedriger Schwellenwert"
+                    "Herzfrequenz am Handgelenk" -> "Herzfrequenz senden"
+                "Einstellungen Fitness" -> "Pulsoximeter"
+                "Einstellungen Fitness" -> "Fitness Inaktivitätsalarm"
+                "Einstellungen Fitness" -> "Fitness Zielalarme" 
+                "Einstellungen Fitness" -> "Move IQ"
+            Einstellungen -> Karte
+                Karte -> Kartenmanager
+                    Kartenmanager -> "TopoActive-Karten"
+                        "TopoActive-Karten" -> "TopoActive-Karten Karte 1"
+                        "TopoActive-Karten" -> "TopoActive-Karten Karte 2"
+                        "TopoActive-Karten" -> "TopoActive-Karten Karte 3"
+                        "TopoActive-Karten" -> "Karte hinzufügen"
+                    Kartenmanager -> "Kartenmanager Karte 1"
+                    Kartenmanager -> "Kartenmanager Karte 2"
+                    Kartenmanager -> "Kartenmanager Karte 3"
+                Karte -> Kartendesign
+                Karte -> Ausrichtung
+                Karte -> Benutzerpositionen
+                Karte -> "Auto-Zoom"
+                Karte -> "Auf Straße zeigen"
+                Karte -> Trackaufzeichung
+                Karte -> Trackfarbe
+                Karte -> Detailgrad
+                Karte -> "Plastische Karte"
+                Karte -> Marine
+                Karte -> "Segmente zeichnen"
+                Karte -> "Höhenlinie zeichnen"
+                Karte -> "Design wiederherstellen"
+            Einstellungen -> Navigation
+                Navigation -> Datenseiten
+                    Datenseiten -> "Datenseiten Karte"
+                    Datenseiten -> "POI entlang Route"
+                    Datenseiten -> "Kompass"
+                    Datenseiten -> "Höhenprofil"
+                    Datenseiten -> "Datenseiten Seite 1"
+                        "Datenseiten Seite 1" -> "Seite 1 Status"
+                        "Datenseiten Seite 1" -> "Seite 1 Layout"
+                        "Datenseiten Seite 1" -> "Seite 1 Feld 1"
+                        "Datenseiten Seite 1" -> "Seite 1 Feld 2"
+                    Datenseiten -> "Datenseiten Seite 2"
+                        "Datenseiten Seite 2" -> "Seite 2 Status"
+                        "Datenseiten Seite 2" -> "Seite 2 Layout"
+                        "Datenseiten Seite 2" -> "Seite 2 Feld 1"
+                        "Datenseiten Seite 2" -> "Seite 2 Feld 2"
+                    Datenseiten -> "Datenseiten Seite 3"
+                        "Datenseiten Seite 3" -> "Seite 3 Status"
+                        "Datenseiten Seite 3" -> "Seite 3 Layout"
+                        "Datenseiten Seite 3" -> "Seite 3 Feld 1"
+                        "Datenseiten Seite 3" -> "Seite 3 Feld 2"
+                Navigation -> Richtungsanzeige
+                Navigation -> "Navigation Alarme"
+                    "Navigation Alarme" -> "Distanz zum endgültigen Ziel"
+                        "Distanz zum endgültigen Ziel" -> "Distanz zum endgültigen Ziel Status"
+                        "Distanz zum endgültigen Ziel" -> "Distanz zum endgültigen Ziel Distanz"
+                    "Navigation Alarme" -> "Ziel: Zeit"
+                        "Ziel: Zeit" -> "Ziel: Zeit Status"
+                        "Ziel: Zeit" -> "Ziel: Zeit Zeit"
+                    "Navigation Alarme" -> "Streckenabw."
+                    "Navigation Alarme" -> "Abbiegehinweise"
+            Einstellungen -> "Power Manager"
+                "Power Manager" -> Energiesparmodus
+                    Energiesparmodus -> "Energiesparmodus Status"
+                    Energiesparmodus -> Bearbeiten
+                        Bearbeiten -> "Bearbeiten Displaydesign"
+                        Bearbeiten -> "Bearbeiten Musik"
+                        Bearbeiten -> "Bearbeiten Telefon"
+                        Bearbeiten -> "Bearbeiten WLAN"
+                        Bearbeiten -> "Bearbeiten HF am Handgelenk"
+                        Bearbeiten -> "Bearbeiten Pulsoximeter"
+                        Bearbeiten -> "Bearbeiten Beleuchtung"
+                "Power Manager" -> "Akku Laufzeit in %"
+                "Power Manager" -> "Erw. Akkulaufzeit"
 
-            Einstellungen -- System
-                System -- Sprache
-                System -- Zeit
-                    Zeit -- Zeitformat
-                    Zeit -- Datumsformat
-                    Zeit -- "Uhrzeit einstellen"
-                    Zeit -- "Zeit Alarme"
-                        "Zeit Alarme" -- "Zeit Bis Sonnenuntergang"
-                        "Zeit Alarme" -- "Zeit Bis Sonnenaufgang"
-                        "Zeit Alarme" -- "Zeit Stündlich"
-                    Zeit -- "Über GPS synchronisieren"
-                System -- Beleuchtung
-                    Beleuchtung -- "Beleuchtung Während der Aktivität"
-                    Beleuchtung -- "Beleuchtung Allgemeine Nutzung"
-                    Beleuchtung -- "Beim Schlafen"
-                System -- Touchscreen
-                    Touchscreen -- "Touchscreen Während der Aktivität"
-                    Touchscreen -- "Touchscreen Allg. Nutzung"
-                System -- "Ton und Vibration"
-                    "Ton und Vibration" -- "Ton Warntöne"
-                    "Ton und Vibration" -- "Alarmvibration"
-                    "Ton und Vibration" -- "Tastentöne"
-                    "Ton und Vibration" -- "Tastenvibration"
-                System -- Schlafmodus
-                    Schlafmodus -- Plan
-                        Plan -- "Nacht 1"
-                        Plan -- "Nacht 2"
-                    Schlafmodus -- "Schlafmodus Displaydesign"
-                    Schlafmodus -- "Schlafmodus Beleuchtung"
-                        "Schlafmodus Beleuchtung" -- Helligkeit
-                        "Schlafmodus Beleuchtung" -- Tasten
-                        "Schlafmodus Beleuchtung" -- Zeitlimit
-                    Schlafmodus -- "Schlafmodus DND"
-                System -- DND
-                    DND -- Status
-                    DND -- "DND Beim Schlafen"
-                    DND -- "DND Bearbeiten"
-                System -- Hotkeys
-                    Hotkeys -- "Hotkey 1"
-                        "Hotkey 1" -- "Funktion 1"
-                        "Hotkey 1" -- "Funktion 2"
-                    Hotkeys -- "Hotkey 2"
-                        "Hotkey 2" -- "Funktion 1"
-                        "Hotkey 2" -- "Funktion 2"
-                System -- "Auto-Sperre"
-                    "Auto-Sperre" -- "Sperre Aus"
-                    "Auto-Sperre" -- "Sperre Immer"
-                    "Auto-Sperre" -- "Sperre Während der Aktivität"
-                    "Auto-Sperre" -- "Sperre Nicht während der Aktivität"
-                System -- Format
-                    Format -- Einheiten
-                    Format -- "Präferenz für Pace/Geschwindigkeit"
-                    Format -- Wochenanfang
-                    Format -- Positionsformat
-                System -- Leistungzustand
-                System -- Datenaufzeichnung
-                    Datenaufzeichnung -- Frequenz
-                    Datenaufzeichnung -- "HFV speichern"
-                System -- "USB-Modus"
-                    "USB-Modus" -- Garmin
-                    "USB-Modus" -- "MTP"
-                System -- Reset
-                    Reset -- "Werksstandard wiederherstellen"
-                    Reset -- "Alle Aktivitäten löschen?"
-                    Reset -- "Gesamtwerte zurücksetzen"
-                    Reset -- "Daten lösch. u. Einst. zurücksetzen"
-                System -- "Software-Update"
-                    "Software-Update" -- "Aut. Update"
-                    "Software-Update" -- "Nach Updates suchen"
-                System -- Info
-    Ausgeschalten -- Leistung
-    Leistung -- "Einstellungen"
-    Leistung -- "Spezifische Einstellungen(Übersicht)"
-    Ausgeschalten -- Trainingszustand
-    Trainingszustand -- "Einstellungen"
-    Trainingszustand -- "Spezifische Einstellungen(Übersicht)"
-    Ausgeschalten -- Trainingsbereitschaft
-    Trainingsbereitschaft -- "Einstellungen"
-    Trainingsbereitschaft -- "Spezifische Einstellungen(Übersicht)"
-    Ausgeschalten -- "HFV-Status"
-    "HFV-Status" -- "Einstellungen"
-    "HFV-Status" -- "Spezifische Einstellungen(Übersicht)"
-    Ausgeschalten -- Benachrichtigungen
-    Benachrichtigungen -- "Einstellungen"
-    Benachrichtigungen -- "Spezifische Einstellungen(Übersicht)"
-    Ausgeschalten -- Herzfrequenz
-    Herzfrequenz -- "Einstellungen"
-    Herzfrequenz -- "Spezifische Einstellungen(Übersicht)"
-    Ausgeschalten -- Musikfunktionen
-    Musikfunktionen -- "Einstellungen"
-    Musikfunktionen -- "Spezifische Einstellungen(Übersicht)"
-    Ausgeschalten -- ABC
-    ABC -- "Einstellungen"
-    ABC -- "Spezifische Einstellungen(Übersicht)"
-    Ausgeschalten -- Atmung
-        Atmung -- "Einstellungen"
-        Atmung -- "Spezifische Einstellungen(Übersicht)"
-    Ausgeschalten -- Schlaf
-        Schlaf -- "Einstellungen"
-        Schlaf -- "Spezifische Einstellungen(Übersicht)"
-    Ausgeschalten -- "Protokoll Home"
-        "Protokoll Home" -- "Einstellungen"
-        "Protokoll Home" -- "Spezifische Einstellungen(Übersicht)"
-    Ausgeschalten -- "Letze Trainings"
-        "Letzte Trainigns" -- "Spezifische Einstellungen(Übersicht)"
-        "Letzte Trainigns" -- "Einstellungen"
+            Einstellungen -> System
+                System -> Sprache
+                System -> Zeit
+                    Zeit -> Zeitformat
+                    Zeit -> Datumsformat
+                    Zeit -> "Uhrzeit einstellen"
+                    Zeit -> "Zeit Alarme"
+                        "Zeit Alarme" -> "Zeit Bis Sonnenuntergang"
+                        "Zeit Alarme" -> "Zeit Bis Sonnenaufgang"
+                        "Zeit Alarme" -> "Zeit Stündlich"
+                    Zeit -> "Über GPS synchronisieren"
+                System -> Beleuchtung
+                    Beleuchtung -> "Beleuchtung Während der Aktivität"
+                    Beleuchtung -> "Beleuchtung Allgemeine Nutzung"
+                    Beleuchtung -> "Beim Schlafen"
+                System -> Touchscreen
+                    Touchscreen -> "Touchscreen Während der Aktivität"
+                    Touchscreen -> "Touchscreen Allg. Nutzung"
+                System -> "Ton und Vibration"
+                    "Ton und Vibration" -> "Ton Warntöne"
+                    "Ton und Vibration" -> "Alarmvibration"
+                    "Ton und Vibration" -> "Tastentöne"
+                    "Ton und Vibration" -> "Tastenvibration"
+                System -> Schlafmodus
+                    Schlafmodus -> Plan
+                        Plan -> "Nacht 1"
+                        Plan -> "Nacht 2"
+                    Schlafmodus -> "Schlafmodus Displaydesign"
+                    Schlafmodus -> "Schlafmodus Beleuchtung"
+                        "Schlafmodus Beleuchtung" -> Helligkeit
+                        "Schlafmodus Beleuchtung" -> Tasten
+                        "Schlafmodus Beleuchtung" -> Zeitlimit
+                    Schlafmodus -> "Schlafmodus DND"
+                System -> DND
+                    DND -> Status
+                    DND -> "DND Beim Schlafen"
+                    DND -> "DND Bearbeiten"
+                System -> Hotkeys
+                    Hotkeys -> "Hotkey 1"
+                        "Hotkey 1" -> "H1 Funktion 1"
+                        "Hotkey 1" -> "H1 Funktion 2"
+                        "Hotkey 1" -> "H1 Funktion 3"
+                    Hotkeys -> "Hotkey 2"
+                        "Hotkey 2" -> "H2 Funktion 1"
+                        "Hotkey 2" -> "H2 Funktion 2"
+                        "Hotkey 2" -> "H2 Funktion 3"
+                    Hotkeys -> "Hotkey 3"
+                        "Hotkey 3" -> "H3 Funktion 1"
+                        "Hotkey 3" -> "H3 Funktion 2"
+                        "Hotkey 3" -> "H3 Funktion 3"
+                System -> "Auto-Sperre"
+                    "Auto-Sperre" -> "Sperre Aus"
+                    "Auto-Sperre" -> "Sperre Immer"
+                    "Auto-Sperre" -> "Sperre Während der Aktivität"
+                    "Auto-Sperre" -> "Sperre Nicht während der Aktivität"
+                System -> Format
+                    Format -> Einheiten
+                    Format -> "Präferenz für Pace/Geschwindigkeit"
+                    Format -> Wochenanfang
+                    Format -> Positionsformat
+                System -> Leistungzustand
+                System -> Datenaufzeichnung
+                    Datenaufzeichnung -> Frequenz
+                    Datenaufzeichnung -> "HFV speichern"
+                System -> "USB-Modus"
+                    "USB-Modus" -> Garmin
+                    "USB-Modus" -> "MTP"
+                System -> Reset
+                    Reset -> "Werksstandard wiederherstellen"
+                    Reset -> "Alle Aktivitäten löschen?"
+                    Reset -> "Gesamtwerte zurücksetzen"
+                    Reset -> "Daten lösch. u. Einst. zurücksetzen"
+                System -> "Software-Update"
+                    "Software-Update" -> "Aut. Update"
+                    "Software-Update" -> "Nach Updates suchen"
+                System -> Info
+    Ausgeschalten -> Leistung
+        Leistung -> "Einstellungen"
+        Leistung -> "Spezifische Einstellungen(Übersicht)"
+    Ausgeschalten -> Trainingszustand
+        Trainingszustand -> "Einstellungen"
+        Trainingszustand -> "Spezifische Einstellungen(Übersicht)"
+    Ausgeschalten -> Trainingsbereitschaft
+        Trainingsbereitschaft -> "Einstellungen"
+        Trainingsbereitschaft -> "Spezifische Einstellungen(Übersicht)"
+    Ausgeschalten -> "HFV-Status"
+        "HFV-Status" -> "Einstellungen"
+        "HFV-Status" -> "Spezifische Einstellungen(Übersicht)"
+    Ausgeschalten -> Benachrichtigungen
+        Benachrichtigungen -> "Einstellungen"
+        Benachrichtigungen -> "Spezifische Einstellungen(Übersicht)"
+    Ausgeschalten -> Herzfrequenz
+        Herzfrequenz -> "Einstellungen"
+        Herzfrequenz -> "Spezifische Einstellungen(Übersicht)"
+    Ausgeschalten -> Musikfunktionen
+        Musikfunktionen -> "Einstellungen"
+        Musikfunktionen -> "Spezifische Einstellungen(Übersicht)"
+    Ausgeschalten -> ABC
+        ABC -> "Einstellungen"
+        ABC -> "Spezifische Einstellungen(Übersicht)"
+    Ausgeschalten -> Atmung
+        Atmung -> "Einstellungen"
+        Atmung -> "Spezifische Einstellungen(Übersicht)"
+    Ausgeschalten -> Schlaf
+        Schlaf -> "Einstellungen"
+        Schlaf -> "Spezifische Einstellungen(Übersicht)"
+    Ausgeschalten -> "Protokoll Home"
+        "Protokoll Home" -> "Einstellungen"
+        "Protokoll Home" -> "Spezifische Einstellungen(Übersicht)"
+    Ausgeschalten -> "Letzte Trainings"
+        "Letzte Trainings" -> "Spezifische Einstellungen(Übersicht)"
+        "Letzte Trainings" -> "Einstellungen"
 
 }
 
