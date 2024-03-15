@@ -112,8 +112,13 @@ class DMenu extends Ui.View {
     itemArray = _itemArray;
     title = _menuTitle;
     numberOfItems = _numberOfItems;
-    index = 1;
-    nextIndex = 1;
+    if (itemArray.size() <= 2) {
+      index = 0;
+      nextIndex = 0;
+    } else {
+      index = 1;
+      nextIndex = 1;
+    }
 
     View.initialize();
   }
@@ -174,6 +179,7 @@ class DMenu extends Ui.View {
 
   function selectedItem() {
     itemArray[index].index = index;
+    System.println(itemArray[index].label); // DEBUG
     return itemArray[index];
   }
 
