@@ -16,14 +16,10 @@ class DMenuTestApp extends App.AppBase {
   //! Return the initial view of your application here
   function getInitialView() {
     var homeMenu = [
-      new DMenuItem(:Displaydesign, "Displaydesign", null, null),
-      new DMenuItem(:Uhren, "Uhren", null, null),
-      new DMenuItem(:Protokoll, "Protokoll", null, null),
-      new DMenuItem(:Aktivitaten, "Aktivitäten und Apps", null, null),
-      new DMenuItem(:Darstellung, "Darstellung", null, null),
-      new DMenuItem(:Benachrichtigungen, "Benachrichtigungen und Alarme", null, null),
+      new DMenuItem(:Items3, "3 Items", null),
+      new DMenuItem(:Items5, "5 Items", null),
     ];
-    var view = new DMenu(homeMenu, "Home", 3);
+    var view = new DMenu(homeMenu, "Items?", 5, null);
     return [view, new DMenuDelegate(view, new HomeDelegate(view))];
   }
 }

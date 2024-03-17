@@ -152,6 +152,10 @@ digraph{
     Ausgeschalten -> Home [label="START-STOP gedürckt halten"]
         Home -> "Spezifische Einstellungen (Home)" [label="UP gedrückt halten"]
             "Spezifische Einstellungen (Home)" -> Displaydesign
+                Displaydesign -> "Display 1"
+                Displaydesign -> "Display 2"
+                Displaydesign -> "Display 3"
+                Displaydesign -> "Display hinzufügen"
             "Spezifische Einstellungen (Home)" -> Uhren
                 Uhren -> Alarme
                     Alarme -> "Alarm 1"
@@ -425,7 +429,6 @@ digraph{
                         Bearbeiten -> "Bearbeiten Beleuchtung"
                 "Power Manager" -> "Akku Laufzeit in %"
                 "Power Manager" -> "Erw. Akkulaufzeit"
-
             Einstellungen -> System
                 System -> Sprache
                 System -> Zeit
