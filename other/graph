@@ -216,6 +216,8 @@ digraph{
                         "History Schwimmen" -> "Schwimmen wöchentlich"
                         "History Schwimmen" -> "Schwimmen monatlich"
                 Protokoll -> Optionen
+                    Optionen -> "Alle Aktivitäten löschen?"
+                    Optionen -> "Gesamtwerte zurücksetzen"
         Home -> Einstellungen
             Einstellungen -> "Aktivitäten und Apps"
                 "Aktivitäten und Apps" -> "Details Aktivität 1"
@@ -277,7 +279,7 @@ digraph{
                         "Systemalarme Barometer" -> Unwetterwarnung
                             Unwetterwarnung -> "Unwetterwarnung Status"
                             Unwetterwarnung -> Rate
-                    Systemalarme -> "Systemalarme Telefon"Einstellungen
+                    Systemalarme -> "Systemalarme Telefon"
                     Systemalarme -> "Systemalarme Fitness"
                         "Systemalarme Fitness" -> Inaktivitätsalarm
                         "Systemalarme Fitness" -> Zielalarme

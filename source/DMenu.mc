@@ -105,13 +105,12 @@ class DMenu extends Ui.View {
   hidden var drawMenu;
 
   var menuHeight = null;
-  function initialize(_itemArray, _menuTitle, _menuSize, _testCase){
-    System.println("menu size: " + _menuSize +  ", testCase: " + _testCase);
+  function initialize(_itemArray, _menuTitle, _menuSize, _testCase) {
+    System.println("menu size: " + _menuSize + ", testCase: " + _testCase);
     itemArray = _itemArray;
     title = _menuTitle;
     menuSize = _menuSize;
     testCase = _testCase;
-
 
     if (itemArray.size() <= 2) {
       index = 0;
@@ -340,8 +339,9 @@ class DMenuDelegate extends Ui.BehaviorDelegate {
 
     if (t == WatchUi.CLICK_TYPE_TAP) {
       if (menu.menuHeight != null) {
-        var h_entry = menu.menuHeight / menuSize; 
-        if (c[1] > h_entry * 2) { // TODO check if correct on real watch
+        var h_entry = menu.menuHeight / menuSize;
+        if (c[1] > h_entry * 2) {
+          // TODO check if correct on real watch
           return onNextPage();
         } else if (c[1] < h_entry) {
           return onPreviousPage();
