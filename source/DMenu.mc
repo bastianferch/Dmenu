@@ -112,12 +112,12 @@ class DMenu extends Ui.View {
     menuSize = _menuSize;
     testCase = _testCase;
 
-    if (itemArray.size() <= 2) {
-      index = 0;
-      nextIndex = 0;
-    } else {
+    if (itemArray.size() > 2 && menuSize > 3) {
       index = 1;
       nextIndex = 1;
+    } else {
+      index = 0;
+      nextIndex = 0;
     }
 
     View.initialize();
@@ -250,7 +250,7 @@ class DMenu extends Ui.View {
 
 // Done as a class so it can be animated.
 class DrawMenu extends Ui.Drawable {
-  const TITLE_FONT = Gfx.FONT_SMALL;
+  const TITLE_FONT = Gfx.FONT_TINY;
   var t = 0; // 'time' in the animation cycle 0...1000 or -1000...0.
   var index, nextIndex, menu;
 
@@ -272,29 +272,33 @@ class DrawMenu extends Ui.Drawable {
     // Depending on where we are in the menu and in the animation some of
     // these will be unnecessary but it is easier to draw everything and
     // rely on clipping to avoid unnecessary drawing calls.
-    drawTitle(dc, y - nextIndex * h_entry - h_entry);
+    drawTitle(dc, y);
     for (var i = -2; i < menuSize; i++) {
       drawItem(dc, nextIndex + i, y + h_entry * i, i == 0);
     }
   }
 
-  function drawTitle(dc, y) {
+  function drawTitle(dc, center) {
     var width = dc.getWidth();
     var h_entry = dc.getHeight() / menuSize;
-
-    // Check if any of the title is visible.,
-    if (y < -h_entry) {
-      return;
-    }
+    var y_title = center - (nextIndex + 1) * h_entry;
+    System.println("label " + menu.selectedItem().label + " y_title: " + y_title); // DEBUG
 
     dc.setColor(Gfx.COLOR_BLACK, Gfx.COLOR_WHITE);
-    dc.fillRectangle(0, y - 104, width, h_entry * 3 - 2);
+    // Check if any of the title is visible.,
+    if (y_title - 1 < - h_entry) {
+      return;
+    } else if(y_title <= 0 && menuSize > 3){
+      dc.fillRectangle(0, 0, width, h_entry * Math.floor(menuSize / 2) - h_entry);
+    } else {
+    dc.fillRectangle(0, 0, width, h_entry * Math.floor(menuSize / 2)); // TODO fix this for other number of menu items
+    }
 
     if (menu.title != null) {
       var dims = dc.getTextDimensions(menu.title, TITLE_FONT);
       var h = (h_entry - dims[1]) / 2;
       dc.setColor(Gfx.COLOR_WHITE, Gfx.COLOR_BLACK);
-      dc.drawText(width / 2, y + h, TITLE_FONT, menu.title, Gfx.TEXT_JUSTIFY_CENTER);
+      dc.drawText(width / 2, y_title + h, TITLE_FONT, menu.title, Gfx.TEXT_JUSTIFY_CENTER);
     }
   }
 
@@ -340,10 +344,10 @@ class DMenuDelegate extends Ui.BehaviorDelegate {
     if (t == WatchUi.CLICK_TYPE_TAP) {
       if (menu.menuHeight != null) {
         var h_entry = menu.menuHeight / menuSize;
-        if (c[1] > h_entry * 2) {
-          // TODO check if correct on real watch
+        var middleItemStart = h_entry * Math.floor(menuSize/2);
+        if (c[1] > (middleItemStart + h_entry)) { 
           return onNextPage();
-        } else if (c[1] < h_entry) {
+        } else if (c[1] < middleItemStart) {
           return onPreviousPage();
         }
       }

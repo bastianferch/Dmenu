@@ -53,15 +53,15 @@ class HomeDelegate extends Ui.MenuInputDelegate {
         new DMenuItem(:Displaydesign, "Displaydesign", null),
         new DMenuItem(:Uhren, "Uhren", null),
         new DMenuItem(:Protokoll, "Protokoll", null),
-        new DMenuItem(:Aktivitaten, "Aktivitäten und Apps", null),
+        new DMenuItem(:AktivitaetenUndApps, "Aktivitäten und Apps", null),
         new DMenuItem(:Darstellung, "Darstellung", null),
         new DMenuItem(:Benachrichtigungen, "Benachrichtigungen und Alarme", null),
-        new DMenuItem(:Sensoren, "Sensoren und Zubehör", null),
+        new DMenuItem(:SensorenUndZubehör, "Sensoren und Zubehör", null),
         new DMenuItem(:Musik, "Musik", null),
         new DMenuItem(:Konnektivitat, "Konnektivität", null),
         new DMenuItem(:Ansagen, "Ansagen", null),
         new DMenuItem(:Benutzerprofil, "Benutzerprofil", null),
-        new DMenuItem(:Sicherheit, "Sicherheit und Tracking", null),
+        new DMenuItem(:SicherheitUndTracking, "Sicherheit und Tracking", null),
         new DMenuItem(:Fitness, "Fitness", null),
         new DMenuItem(:Karte, "Karte", null),
         new DMenuItem(:Navigation, "Navigation", null),
@@ -137,9 +137,9 @@ class HomeDelegate extends Ui.MenuInputDelegate {
       WatchUi.pushView(subview, new DMenuDelegate(subview, new HomeDelegate(subview)), transition);
     } else if (item.id == :DieseWoche) {
       var subMenu = [
-        new DMenuItem(:Aktivitaet1, "Aktivität 1", null),
-        new DMenuItem(:Aktivitaet2, "Aktivität 2", null),
-        new DMenuItem(:Aktivitaet3, "Aktivität 3", null),
+        new DMenuItem(:Aktivitaet1, "Laufen", null),
+        new DMenuItem(:Aktivitaet2, "Radfahren", null),
+        new DMenuItem(:Aktivitaet3, "Schwimmen", null),
         new DMenuItem(:AktivitaetNew, "AKtivität hinzufügen", null),
       ];
       var subview = new DMenu(subMenu, "Diese Woche", menuSize, testCase);
@@ -197,13 +197,13 @@ class HomeDelegate extends Ui.MenuInputDelegate {
       WatchUi.pushView(subview, new DMenuDelegate(subview, new HomeDelegate(subview)), transition);
     } else if (item.id == :Gesamt) {
       var subMenu = [
-        new DMenuItem(:HistoryLaufen, "History Laufen", null),
-        new DMenuItem(:HistoryRadfahren, "History Radfahren", null),
-        new DMenuItem(:HistorySchwimmen, "History Schwimmen", null),
+        new DMenuItem(:HistoryLaufen, "Laufen", null),
+        new DMenuItem(:HistoryRadfahren, "Radfahren", null),
+        new DMenuItem(:HistorySchwimmen, "Schwimmen", null),
       ];
       var subview = new DMenu(subMenu, "Gesamt", menuSize, testCase);
       WatchUi.pushView(subview, new DMenuDelegate(subview, new HomeDelegate(subview)), transition);
-    } else if (item.id == :HistoryLaufen) {
+    } else if (item.id == :HistoryLaufen && testCase == 1) {
       var subMenu = [
         // Dead end
         new DMenuItem(:LaufenWoche, "Laufen wöchentlich", null),
@@ -211,7 +211,7 @@ class HomeDelegate extends Ui.MenuInputDelegate {
       ];
       var subview = new DMenu(subMenu, "History Laufen", menuSize, testCase);
       WatchUi.pushView(subview, new DMenuDelegate(subview, new HomeDelegate(subview)), transition);
-    } else if (item.id == :HistoryRadfahren) {
+    } else if (item.id == :HistoryRadfahren  && testCase == 1) {
       var subMenu = [
         // Dead end
         new DMenuItem(:RadfahrenWoche, "Radfahren wöchentlich", null),
@@ -219,7 +219,7 @@ class HomeDelegate extends Ui.MenuInputDelegate {
       ];
       var subview = new DMenu(subMenu, "History Radfahren", menuSize, testCase);
       WatchUi.pushView(subview, new DMenuDelegate(subview, new HomeDelegate(subview)), transition);
-    } else if (item.id == :HistorySchwimmen) {
+    } else if (item.id == :HistorySchwimmen && testCase == 1) {
       var subMenu = [
         // Dead end
         new DMenuItem(:SchwimmenWoche, "Schwimmen wöchentlich", null),
@@ -237,25 +237,25 @@ class HomeDelegate extends Ui.MenuInputDelegate {
       WatchUi.pushView(subview, new DMenuDelegate(subview, new HomeDelegate(subview)), transition);
     } else if (item.id == :AktivitaetenUndApps) {
       var subMenu = [
-        new DMenuItem(:DetailsAktivitaet1, "Aktivität 1", null),
-        new DMenuItem(:DetailsAktivitaet2, "Aktivität 2", null),
-        new DMenuItem(:DetailsAktivitaet3, "Aktivität 3", null),
+        new DMenuItem(:DetailsLaufen, "Laufen", null),
+        new DMenuItem(:DetailsRadfahren, "Radfahren", null),
+        new DMenuItem(:DetailsSchwimmen, "Schwimmen", null),
         new DMenuItem(:AktivitaetHinzufuegen, "Aktivität hinzufügen", null), // Dead end
       ];
-      var subview = new DMenu(subMenu, "Aktivitäten und Apps", menuSize, testCase);
+      var subview = new DMenu(subMenu, "Aktivitäten\nund Apps", menuSize, testCase);
       WatchUi.pushView(subview, new DMenuDelegate(subview, new HomeDelegate(subview)), transition);
-    } else if (item.id == :DetailsAktivitaet1) {
+    } else if (item.id == :DetailsLaufen) {
       var subMenu = [
         // Dead end
-        new DMenuItem(:Aktivitaet1Einstellungen, "Aktivität 1-Einstellungen", null),
-        new DMenuItem(:A1AusFavoritenEntfernen, "A1 Aus Favoriten entfernen", null),
-        new DMenuItem(:A1AktivitaetKopieren, "A1 Aktivität kopieren", null),
-        new DMenuItem(:A1AktivitaetNeuAnordnen, "A1 Aktivität Neu anordnen", null),
-        new DMenuItem(:A1AusListeEntfernen, "A1 Aus Liste entfernen", null),
+        new DMenuItem(:Aktivitaet1Einstellungen, "Einstellungen", null),
+        new DMenuItem(:A1AusFavoritenEntfernen, "Aus Favoriten entfernen", null),
+        new DMenuItem(:A1AktivitaetKopieren, "Aktivität kopieren", null),
+        new DMenuItem(:A1AktivitaetNeuAnordnen, "Aktivität Neu anordnen", null),
+        new DMenuItem(:A1AusListeEntfernen, "Aus Liste entfernen", null),
       ];
-      var subview = new DMenu(subMenu, "Aktivität 1", menuSize, testCase);
+      var subview = new DMenu(subMenu, "Laufen", menuSize, testCase);
       WatchUi.pushView(subview, new DMenuDelegate(subview, new HomeDelegate(subview)), transition);
-    } else if (item.id == :DetailsAktivitaet2) {
+    } else if (item.id == :DetailsRadfahren) {
       var subMenu = [
         // Dead end
         new DMenuItem(:A2Einstellungen, "Einstellungen", null),
@@ -264,9 +264,9 @@ class HomeDelegate extends Ui.MenuInputDelegate {
         new DMenuItem(:A2AktivitaetNeuAnordnen, "Neu anordnen", null),
         new DMenuItem(:A2AusListeEntfernen, "Aus Liste entfernen", null),
       ];
-      var subview = new DMenu(subMenu, "Aktivität 2", menuSize, testCase);
+      var subview = new DMenu(subMenu, "Radfahren", menuSize, testCase);
       WatchUi.pushView(subview, new DMenuDelegate(subview, new HomeDelegate(subview)), transition);
-    } else if (item.id == :DetailsAktivitaet3) {
+    } else if (item.id == :DetailsSchwimmen) {
       var subMenu = [
         // Dead end
         new DMenuItem(:A3Einstellungen, "Einstellungen", null),
@@ -275,7 +275,7 @@ class HomeDelegate extends Ui.MenuInputDelegate {
         new DMenuItem(:A3AktivitaetNeuAnordnen, "Aktivität Neu anordnen", null),
         new DMenuItem(:A3AusListeEntfernen, "Aus Liste entfernen", null),
       ];
-      var subview = new DMenu(subMenu, "Aktivität 3", menuSize, testCase);
+      var subview = new DMenu(subMenu, "Schwimmen", menuSize, testCase);
       WatchUi.pushView(subview, new DMenuDelegate(subview, new HomeDelegate(subview)), transition);
     } else if (item.id == :Darstellung) {
       var subMenu = [
@@ -314,7 +314,7 @@ class HomeDelegate extends Ui.MenuInputDelegate {
         new DMenuItem(:SmartNotifications, "Smart Notifications", null), //
         new DMenuItem(:Systemalarme, "Systemalarme", null),
       ];
-      var subview = new DMenu(subMenu, "Benachrichtigungen und Alarme", menuSize, testCase);
+      var subview = new DMenu(subMenu, "Benachrichtigungen\nund Alarme", menuSize, testCase);
       WatchUi.pushView(subview, new DMenuDelegate(subview, new HomeDelegate(subview)), transition);
     } else if (item.id == :SmartNotifications) {
       var subMenu = [
@@ -343,48 +343,48 @@ class HomeDelegate extends Ui.MenuInputDelegate {
     } else if (item.id == :SensorenUndZubehör) {
       var subMenu = [
         new DMenuItem(:AutoErkennung, "Auto-Erkennung", null),
-        new DMenuItem(:SensorenNeuHinzufügen, "Sensoren Neu hinzufügen", null),
+        new DMenuItem(:SensorenNeuHinzufügen, "Neu hinzufügen", null),
         new DMenuItem(:Sensor1, "Sensor 1", null),
         new DMenuItem(:Sensor2, "Sensor 2", null),
         new DMenuItem(:Sensor3, "Sensor 3", null),
-        new DMenuItem(:SensorenKompass, "Sensoren Kompass", null),
-        new DMenuItem(:SensorenHöhenmesser, "Sensoren Höhenmesser", null),
-        new DMenuItem(:SensorenBarometer, "Sensoren Barometer", null),
-        new DMenuItem(:SensorenGolfsensoren, "Sensoren Golfsensoren", null),
+        new DMenuItem(:SensorenKompass, "Kompass", null),
+        new DMenuItem(:SensorenHöhenmesser, "Höhenmesser", null),
+        new DMenuItem(:SensorenBarometer, "Barometer", null),
+        new DMenuItem(:SensorenGolfsensoren, "Golfsensoren", null),
       ];
       var subview = new DMenu(subMenu, "Sensoren und Zubehör", menuSize, testCase);
       WatchUi.pushView(subview, new DMenuDelegate(subview, new HomeDelegate(subview)), transition);
     } else if (item.id == :SensorenKompass) {
       var subMenu = [
-        new DMenuItem(:KompassKalibrieren, "Kompass Kalibrieren", null),
-        new DMenuItem(:KompassAnzeige, "Kompass Anzeige", null),
-        new DMenuItem(:KompassNordreferenz, "Kompass Nordreferenz", null),
-        new DMenuItem(:KompassModus, "Kompass Modus", null),
+        new DMenuItem(:KompassKalibrieren, "Kalibrieren", null),
+        new DMenuItem(:KompassAnzeige, "Anzeige", null),
+        new DMenuItem(:KompassNordreferenz, "Nordreferenz", null),
+        new DMenuItem(:KompassModus, "Modus", null),
       ];
       var subview = new DMenu(subMenu, "Sensoren Kompass", menuSize, testCase);
       WatchUi.pushView(subview, new DMenuDelegate(subview, new HomeDelegate(subview)), transition);
     } else if (item.id == :SensorenHöhenmesser) {
       var subMenu = [
-        new DMenuItem(:HöhenmesserKalibrieren, "Höhenmesser Kalibrieren", null),
-        new DMenuItem(:HöhenmesserAutoKalibrierung, "Höhenmesser Auto-Kalibrierung", null),
-        new DMenuItem(:HöhenmesserSensormodus, "Höhenmesser Sensormodus", null),
-        new DMenuItem(:HöhenmesserHöhe, "Höhenmesser Höhe", null),
+        new DMenuItem(:HöhenmesserKalibrieren, "Kalibrieren", null),
+        new DMenuItem(:HöhenmesserAutoKalibrierung, "Auto-Kalibrierung", null),
+        new DMenuItem(:HöhenmesserSensormodus, "Sensormodus", null),
+        new DMenuItem(:HöhenmesserHöhe, "Höhe", null),
       ];
       var subview = new DMenu(subMenu, "Sensoren Höhenmesser", menuSize, testCase);
       WatchUi.pushView(subview, new DMenuDelegate(subview, new HomeDelegate(subview)), transition);
     } else if (item.id == :SensorenBarometer) {
       var subMenu = [
-        new DMenuItem(:BarometerKalibrieren, "Barometer Kalibrieren", null),
-        new DMenuItem(:BarometerProfil, "Barometer Profil", null),
-        new DMenuItem(:BarometerUnwetterwarnung, "Barometer Unwetterwarnung", null),
-        new DMenuItem(:BarometerSensormodus, "Barometer Sensormodus", null),
-        new DMenuItem(:BarometerDruck, "Barometer Druck", null),
+        new DMenuItem(:BarometerKalibrieren, "Kalibrieren", null),
+        new DMenuItem(:BarometerProfil, "Profil", null),
+        new DMenuItem(:BarometerUnwetterwarnung, "Unwetterwarnung", null),
+        new DMenuItem(:BarometerSensormodus, "Sensormodus", null),
+        new DMenuItem(:BarometerDruck, "Druck", null),
       ];
       var subview = new DMenu(subMenu, "Sensoren Barometer", menuSize, testCase);
       WatchUi.pushView(subview, new DMenuDelegate(subview, new HomeDelegate(subview)), transition);
     } else if (item.id == :SensorenGolfsensoren) {
       var subMenu = [
-        new DMenuItem(:GolfsensorenNeuHinzufügen, "Golfsensoren Neu hinzufügen", null), //
+        new DMenuItem(:GolfsensorenNeuHinzufügen, "Neu hinzufügen", null), //
       ];
       var subview = new DMenu(subMenu, "Sensoren Golfsensoren", menuSize, testCase);
       WatchUi.pushView(subview, new DMenuDelegate(subview, new HomeDelegate(subview)), transition);
@@ -535,13 +535,13 @@ class HomeDelegate extends Ui.MenuInputDelegate {
       WatchUi.pushView(subview, new DMenuDelegate(subview, new HomeDelegate(subview)), transition);
     } else if (item.id == :Datenseiten) {
       var subMenu = [
-        new DMenuItem(:DatenseitenKarte, "Datenseiten Karte", null),
+        new DMenuItem(:DatenseitenKarte, "Karte", null),
         new DMenuItem(:POIEntlangRoute, "POI entlang Route", null),
         new DMenuItem(:Kompass, "Kompass", null),
         new DMenuItem(:Höhenprofil, "Höhenprofil", null),
-        new DMenuItem(:DatenseitenSeite1, "Datenseiten Seite 1", null),
-        new DMenuItem(:DatenseitenSeite2, "Datenseiten Seite 2", null),
-        new DMenuItem(:DatenseitenSeite3, "Datenseiten Seite 3", null),
+        new DMenuItem(:DatenseitenSeite1, "Seite 1", null),
+        new DMenuItem(:DatenseitenSeite2, "Seite 2", null),
+        new DMenuItem(:DatenseitenSeite3, "Seite 3", null),
       ];
       var subview = new DMenu(subMenu, "Datenseiten", menuSize, testCase);
       WatchUi.pushView(subview, new DMenuDelegate(subview, new HomeDelegate(subview)), transition);
@@ -564,12 +564,12 @@ class HomeDelegate extends Ui.MenuInputDelegate {
       WatchUi.pushView(subview, new DMenuDelegate(subview, new HomeDelegate(subview)), transition);
     } else if (item.id == :Energiesparmodus) {
       var subMenu = [
-        new DMenuItem(:EnergiesparmodusStatus, "Energiesparmodus Status", null), //
+        new DMenuItem(:EnergiesparmodusStatus, "Status", null), //
         new DMenuItem(:Bearbeiten, "Bearbeiten", null),
       ];
       var subview = new DMenu(subMenu, "Energiesparmodus", menuSize, testCase);
       WatchUi.pushView(subview, new DMenuDelegate(subview, new HomeDelegate(subview)), transition);
-    } else if (item.id == :Bearbeiten) {
+    } else if (item.id == :Bearbeiten && testCase ==  4) {
       var subMenu = [
         new DMenuItem(:BearbeitenDisplaydesign, "Displaydesign", null),
         new DMenuItem(:BearbeitenMusik, "Musik", null),
@@ -709,6 +709,14 @@ class HomeDelegate extends Ui.MenuInputDelegate {
       ];
       var subview = new DMenu(subMenu, "Software-Update", menuSize, testCase);
       WatchUi.pushView(subview, new DMenuDelegate(subview, new HomeDelegate(subview)), transition);
+    } else if (item.id == :SchwimmenMonat && testCase == 1) {
+      WatchUi.pushView(new SmipleTextView("Test 1 erfolgreich!"), null, transition);
+    } else if (item.id == :KompassModus && testCase == 2) {
+      WatchUi.pushView(new SmipleTextView("Test 2 erfolgreich!"), null, transition);
+    } else if (item.id == :HFAlarmAlarmtyp && testCase == 3) {
+      WatchUi.pushView(new SmipleTextView("Test 3 erfolgreich!"), null, transition);
+    } else if (item.id == :BearbeitenTelefon && testCase == 4) {
+      WatchUi.pushView(new SmipleTextView("Test 4 erfolgreich!"), null, transition);
     } else {
       System.println("subMenu not set for " + item.stringify());
       WatchUi.pushView(new SmipleTextView("Nicht das richtige \n Ende erreicht. \n Gehe zurück um \nfortzufahren."), null, transition);
